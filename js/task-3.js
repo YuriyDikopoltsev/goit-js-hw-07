@@ -1,23 +1,46 @@
-function findLongestWord(string = '') {
-  let maxWordLength = 0;
-  let maxWord = '';
-  let wordLength = 0;
+const ingredients = [
+  'Картошка',
+  'Грибы',
+  'Чеснок',
+  'Помидоры',
+  'Зелень',
+  'Приправы',
+];
+const images = [
+  {
+    url:
+      'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'White and Black Long Fur Cat',
+  },
+  {
+    url:
+      'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+  },
+  {
+    url:
+      'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Group of Horses Running',
+  },
+];
+const galleryContainerRef = document.querySelector('#gallery');
+galleryContainerRef.insertAdjacentHTML(
+  'afterbegin',
+  images.reduce((acc, { url, alt }) => {
+    acc += ` <li class= 'gallery__item'><img class='gallery__image' src="${url}" alt="${alt}}"/><li>`;
+    return acc;
+  }, ''),
+);
 
-  for (let i = 0; i < string.split(' ').length; i += 1) {
-    wordLength = string.split(' ')[i].length;
-    if (wordLength > maxWordLength) {
-      maxWordLength = wordLength;
-      maxWord = string.split(' ')[i];
-    }
-  }
-  return maxWord;
-}
+// const galleryContainerRef = document.querySelector('#gallery');
+// const makeImageList = images => {
+//   return images.map(image => {
+//     const imageRef = document.createElement('img');
+//     imageRef.setAttribute('src', `${image.url}`);
+//     imageRef.setAttribute('alt', `${image.alt}`);
+//     return imageRef;
+//   });
+// };
+// const references = makeImageList(images);
 
-console.log(findLongestWord('The quick brown fox jumped over the lazy dog'));
-// 'jumped'
-
-console.log(findLongestWord('Google do a roll'));
-// 'Google'
-
-console.log(findLongestWord('May the force be with you'));
-// 'force'
+// galleryContainerRef.append(...references);
