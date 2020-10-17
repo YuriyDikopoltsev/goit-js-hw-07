@@ -17,9 +17,6 @@
 // #validation-input.invalid {
 //   border-color: #f44336;
 // }
-
-const inputRef = document.querySelector('#validation-input');
-// console.log(inputRef.dataset.length);
 inputRef.addEventListener('blur', onInputBlur);
 function onInputBlur(event) {
   if (event.currentTarget.value.length < inputRef.dataset.length) {
@@ -28,3 +25,5 @@ function onInputBlur(event) {
     inputRef.style.borderColor = '#4caf50';
   }
 }
+const inputRef = document.querySelector('#validation-input');
+// console.log(inputRef.dataset.length);

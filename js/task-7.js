@@ -1,26 +1,14 @@
-function filterArray(array) {
-  'use strict';
-  const numbers = [];
-  for (let i = 0; i < array.length; i += 1) {
-    if (Number.isFinite(array[i]) == true) {
-      numbers.push(array[i]);
-    }
-    // Write code under this line
-  }
-  return numbers;
+// Напиши скрипт, который реагирует на изменение значения input#font-size-control (событие input) и изменяет
+// инлайн - стиль span#text обновляя свойство font - size.В результате при перетаскивании ползунка будет меняться
+// размер текста.
+
+// <input id="font-size-control" type="range" />
+// <br />
+// <span id="text">Абракадабра!</span>
+const textRef = document.querySelector('#text');
+const fontControlRef = document.querySelector('#font-size-control');
+fontControlRef.addEventListener('input', onInputFontValue);
+function onInputFontValue(event) {
+  // console.log(fontControlRef.value);
+  textRef.style.fontSize = `${fontControlRef.value}px`;
 }
-
-console.log(filterArray([-2, 0, 2]));
-// [-2, 0, 2]
-
-console.log(filterArray([1, NaN, Infinity]));
-// [1]
-
-console.log(filterArray([0, -0, 100, '100']));
-// [0, 0, 100]
-
-console.log(filterArray([undefined, false, null, [], 1]));
-// [1]
-
-console.log(filterArray([{}, () => {}, 2]));
-// [2]
