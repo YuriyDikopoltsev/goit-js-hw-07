@@ -1,19 +1,25 @@
-function formatString(string, maxLength = 40) {
-  // console.log(string.split(''));
-
-  if (string.length > maxLength) {
-    string = string.slice(0, maxLength) + '...';
-  }
-  return string;
-}
-
-console.log(formatString('Curabitur ligula sapien, tincidunt non.'));
-// 'Curabitur ligula sapien, tincidunt non.'
-
-console.log(formatString('Vestibulum facilisis, purus nec pulvinar iaculis.'));
-// 'Vestibulum facilisis, purus nec pulvinar...'
-
-console.log(
-  formatString('Vestibulum facilisis, purus nec pulvinar iaculis.', 30),
+const btnDecrementRef = document.querySelector(
+  'button[data-action="decrement"]',
 );
-// 'Vestibulum facilisis, purus ne...'
+const btnIncrementRef = document.querySelector(
+  'button[data-action="increment"]',
+);
+let resultRef = document.querySelector('#value');
+
+const onDecrementBtnClick = () =>
+  (resultRef.textContent = Number(resultRef.textContent) - 1);
+const onIncrementBtnClick = () =>
+  (resultRef.textContent = Number(resultRef.textContent) + 1);
+
+btnDecrementRef.addEventListener('click', onDecrementBtnClick);
+btnIncrementRef.addEventListener('click', onIncrementBtnClick);
+
+// <div id="counter">
+//   <button type="button" data-action="decrement">
+//     -1
+//   </button>
+//   <span id="value">0</span>
+//   <button type="button" data-action="increment">
+//     +1
+//   </button>
+// </div>;
