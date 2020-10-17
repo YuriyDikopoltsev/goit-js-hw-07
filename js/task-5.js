@@ -1,24 +1,15 @@
-function checkForSpam(str) {
-  'use strict';
-  let checkingWord = ' ';
-  let spamWord1 = 'spam';
-  let spamWord2 = 'sale';
+// Напиши скрипт который, при наборе текста в инпуте input#name - input(событие input), подставляет его текущее
+// значение в span#name - output.Если инпут пустой, в спане должна отображаться строка 'незнакомец'.
+// <input type="text" placeholder="Ваше имя?" id="name-input" />
+// <h1>Привет, <span id="name-output">незнакомец</span>!</h1>
+const inputNameRef = document.querySelector('#name-input');
+let nameOutputRef = document.querySelector('#name-output');
 
-  for (let i = 0; i < str.split(' ').length; i += 1) {
-    // console.log(str.split(' ')[i]);
-    checkingWord = str.split(' ')[i];
-    checkingWord = checkingWord.toLowerCase();
-    // console.log(checkingWord);
-    if (checkingWord.includes(spamWord1) || checkingWord.includes(spamWord2)) {
-      return true;
-    }
+const onChangeInputName = event => {
+  nameOutputRef.textContent = event.target.value;
+  if (event.target.value === '') {
+    nameOutputRef.textContent = 'незнакомец';
   }
-  return false;
-}
-console.log(checkForSpam('Latest technology news')); // false
+};
 
-console.log(checkForSpam('JavaScript weekly newsletter')); // false
-
-console.log(checkForSpam('Get best sale offers now!')); // true
-
-console.log(checkForSpam('[SPAM] How to earn fast money?')); // true
+inputNameRef.addEventListener('input', onChangeInputName);
