@@ -17,12 +17,27 @@
 // #validation-input.invalid {
 //   border-color: #f44336;
 // }
+
+// const inputRef = document.querySelector('#validation-input');
+// inputRef.addEventListener('blur', onInputBlur);
+// function onInputBlur(event) {
+//   if (event.currentTarget.value.length < inputRef.dataset.length) {
+//     inputRef.style.borderColor = '#f44336';
+//   } else {
+//     inputRef.style.borderColor = '#4caf50';
+//   }
+// }
+
 const inputRef = document.querySelector('#validation-input');
-inputRef.addEventListener('blur', onInputBlur);
-function onInputBlur(event) {
-  if (event.currentTarget.value.length < inputRef.dataset.length) {
-    inputRef.style.borderColor = '#f44336';
+
+inputRef.addEventListener('blur', validation);
+
+function validation() {
+  if (Number(inputRef.value.length) === Number(inputRef.dataset.length)) {
+    inputRef.classList.add('valid');
+    inputRef.classList.remove('invalid');
   } else {
-    inputRef.style.borderColor = '#4caf50';
+    inputRef.classList.add('invalid');
+    inputRef.classList.remove('valid');
   }
 }
